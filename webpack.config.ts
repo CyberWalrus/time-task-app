@@ -1,18 +1,17 @@
 /* tslint:disable:object-literal-sort-keys */
 import * as path from "path";
 import * as webpack from "webpack";
-import * as webpackDevServer from 'webpack-dev-server';
+import * as webpackDevServer from "webpack-dev-server";
 
 const root = (args: string): string => {
   return path.join.apply(path, [__dirname].concat(`./`, args));
 };
 
-const webpackConfig: webpack.Configuration = {
+const webpackConfig = {
   entry: {
     bundle: [
       root(`client/index.tsx`),
-      root(`style/style.scss`),
-      root(`style/normalize.scss`)
+      root(`style/style.scss`)
     ]
   },
   output: {
@@ -52,12 +51,7 @@ const webpackConfig: webpack.Configuration = {
             loader: `postcss-loader`
           },
           {
-            loader: `sass-loader`,
-            options: {
-              includePaths: [
-                path.resolve(__dirname, `./node_modules/compass-mixins/lib`)
-              ]
-            }
+            loader: `sass-loader`
           }
         ]
       }
@@ -67,9 +61,7 @@ const webpackConfig: webpack.Configuration = {
     extensions: [`.ts`, `.tsx`, `.js`, `json`],
     alias: {
       "@client": root(`client/`),
-      "@server": root(`server/`),
-      "@dist": root(`dist/`),
-      "@config": root(`config/`)
+      "@build": root(`build/`)
     }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],

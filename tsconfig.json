@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "server_compiled",
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es2019",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": false,
+    "alwaysStrict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@client/*": ["client/*"],
+      "@build/*": ["build/*"]
+    }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "**/fixtures",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
+}
