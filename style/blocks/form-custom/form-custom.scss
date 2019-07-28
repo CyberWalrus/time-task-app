@@ -1,0 +1,12 @@
+@import "./__btn/form-custom__btn";
+@import "./__input/form-custom__input.scss";
+@import "./__message/form-custom__message.scss";
+.form-custom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  > * {
+    margin-top: 1rem;
+  }
+}

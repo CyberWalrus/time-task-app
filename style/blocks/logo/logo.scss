@@ -1,0 +1,12 @@
+@import "./__img/logo__img.scss";
+@import "./__link/logo__link.scss";
+
+.logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 100%;
+  user-select: none;
+}

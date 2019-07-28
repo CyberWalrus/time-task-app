@@ -1,0 +1,11 @@
+@import "__circle/menu-bottom__circle";
+@import "__item/menu-bottom__item";
+@import "__link/menu-bottom__link";
+@import "__list/menu-bottom__list";
+
+.menu-bottom {
+  background: var(--color-secondary);
+  inline-size: 100vw;
+  max-inline-size: 100vw;
+  block-size: 3.125rem;
+}

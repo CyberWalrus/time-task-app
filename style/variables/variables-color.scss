@@ -1,0 +1,32 @@
+
+$color-primary: hsl(45, 16%, 75%);
+$color-secondary: hsl(20, 2%, 27%);
+
+$color1: rgba(59, 190, 247, 1);
+$color2: rgba(255, 229, 38, 1);
+$color3: rgba(153, 209, 33, 1);
+$color4: rgba(242, 67, 19, 1);
+$color5: rgba(255, 102, 0, 1);
+@mixin defineColorOpacity($color, $value) {
+  #{$color}: #{$value};
+  #{$color}_75: #{change-color($value, $alpha: 0.75)};
+  #{$color}_50: #{change-color($value, $alpha: 0.5)};
+  #{$color}_25: #{change-color($value, $alpha: 0.25)};
+}
+@mixin defineColorVar($color, $value) {
+  @include defineColorOpacity(#{$color}_darker, scale-color($value, $lightness: -80%, $saturation: -40%));
+  @include defineColorOpacity(#{$color}_dark, scale-color($value, $lightness: -35%, $saturation: -20%));
+  @include defineColorOpacity($color, $value);
+  @include defineColorOpacity(#{$color}_light, scale-color($value, $lightness: 40%, $saturation: 20%));
+  @include defineColorOpacity(#{$color}_lighter, scale-color($value, $lightness: 80%, $saturation: 40%));
+}
+:root {
+  @include defineColorVar(--color-primary, $color-primary);
+  @include defineColorVar(--color-secondary, $color-secondary);
+  @include defineColorOpacity(--color-dop1, $color1);
+  @include defineColorOpacity(--color-dop2, $color2);
+  @include defineColorOpacity(--color-dop3, $color3);
+  @include defineColorOpacity(--color-dop4, $color4);
+  @include defineColorOpacity(--color-dop5, $color5);
+  --color-opacity: rgba(0, 0, 0, 0);
+}
