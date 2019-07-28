@@ -1,4 +1,4 @@
-import { StateApp } from "../../type/reducer";
+import { StateApp } from "../../types/reducer";
 import NameSpace from "./../name-spaces";
 import { TypeNotification } from "./condition";
 

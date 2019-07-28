@@ -1,10 +1,11 @@
 {
-  "terminal.integrated.fontFamily": "Fira mono for Powerline",
+  "terminal.integrated.fontFamily": "hack",
   "editor.formatOnSave": true,
   "cSpell.words": [
     "andrey",
     "fullscreen",
     "pakhomov",
+    "persistor",
     "smallsquare",
     "targetsize"
   ],

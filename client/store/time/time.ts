@@ -1,4 +1,4 @@
-import { StateApp, ThunkAction, ThunkDispatch } from "@client/type/reducer";
+import { StateApp, ThunkAction, ThunkDispatch } from "@client/types/reducer";
 import { stringToJDN } from "@client/utils/date/date";
 import { Action as ReduxAction } from "redux";
 
