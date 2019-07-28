@@ -19,7 +19,7 @@ const webpackConfig = {
     path: root(`build/`)
   },
   devServer: {
-    contentBase: path.join(__dirname, `dist`),
+    contentBase: path.join(__dirname, `build`),
     compress: false,
     port: 8080,
     historyApiFallback: true

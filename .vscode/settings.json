@@ -1,9 +1,12 @@
 {
+  "terminal.integrated.fontFamily": "Fira mono for Powerline",
+  "editor.formatOnSave": true,
   "cSpell.words": [
     "andrey",
     "fullscreen",
     "pakhomov",
     "smallsquare",
     "targetsize"
-  ]
+  ],
+  "prettier.eslintIntegration": true
 }

@@ -6,7 +6,7 @@
     "module": "commonjs",
     "target": "es2019",
     "jsx": "react",
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,7 +17,7 @@
       "@build/*": ["build/*"]
     }
   },
-  "include": ["./**/*.ts", "./**/*.tsx"],
+  "include": ["./**/*.ts", "./**/*.tsx", "client/index.tsx"],
   "exclude": [
     "node_modules",
     "build",

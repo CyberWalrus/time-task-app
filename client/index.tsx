@@ -1,8 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {Provider} from "react-redux";
+import React from 'react';
+import {render} from 'react-dom';
+import App from './components/app/app';
+
 const init = (): void => {
-  ReactDOM.render(<div> Hello Walrus </div>, document.querySelector(`#app`));
+  render(<App />, document.querySelector(`#app`));
 };
 
 init();
