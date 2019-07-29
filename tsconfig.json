@@ -6,7 +6,7 @@
     "module": "commonjs",
     "target": "es2019",
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": false,
     "alwaysStrict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

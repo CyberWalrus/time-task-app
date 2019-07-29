@@ -1,4 +1,23 @@
-// Функция передвигает значения
+export const getLengthSame = <ValueType>(
+  arrayInput: ValueType[],
+  key: string,
+  index: number,
+  length: number = 1,
+): number => {
+  try {
+    const arrayOutput = arrayInput.slice();
+    if (
+      arrayOutput[index][key] !== undefined
+      && arrayOutput[index][key] === arrayOutput[index + 1][key]
+    ) {
+      return getLengthSame(arrayInput, key, index + 1, length + 1);
+    }
+    return length;
+  } catch (error) {
+    return length;
+  }
+};
+
 export const arrayMoveKeyValue = <ValueType>(
   arrayInput: ValueType[],
   key: string,
@@ -10,11 +29,7 @@ export const arrayMoveKeyValue = <ValueType>(
   const arrayOutput: ValueType[] = arrayInput.slice(0);
   const keyValue = arrayOutput[oldIndex][key];
   if (oldIndex < newIndex) {
-    for (
-      let i = oldIndex;
-      i < newIndex - lengthElements + lengthEndElements;
-      i++
-    ) {
+    for (let i = oldIndex; i < newIndex - lengthElements + lengthEndElements; i += 1) {
       arrayOutput[i][key] = arrayOutput[i + lengthElements][key];
     }
     for (let a = newIndex - lengthElements; a < newIndex; a += 1) {
@@ -33,25 +48,4 @@ export const arrayMoveKeyValue = <ValueType>(
     }
   }
   return arrayOutput;
-};
-
-export const getLengthSame = <ValueType>(
-  arrayInput: ValueType[],
-  key: string,
-  index: number,
-  length: number = 1,
-): number => {
-  try {
-    const arrayOutput = arrayInput.slice();
-    if (
-      arrayOutput[index][key] !== undefined &&
-      arrayOutput[index][key] === arrayOutput[index + 1][key]
-    ) {
-      return getLengthSame(arrayInput, key, index + 1, length + 1);
-    } else {
-      return length;
-    }
-  } catch (error) {
-    return length;
-  }
 };

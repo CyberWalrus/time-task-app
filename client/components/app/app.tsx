@@ -1,7 +1,6 @@
-import React from 'react';
+import * as React from 'react';
+import { ReactElement, FunctionComponent } from 'react';
 
-const App = () => (
-  <div> Hello Walrus </div>
-)
+const App: FunctionComponent = (): ReactElement => <div> Hello Walrus </div>;
 
 export default App;
