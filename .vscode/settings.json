@@ -1,6 +1,5 @@
 {
   "terminal.integrated.fontFamily": "hack",
-  "editor.formatOnSave": true,
   "cSpell.words": [
     "andrey",
     "fullscreen",
@@ -9,5 +8,42 @@
     "smallsquare",
     "targetsize"
   ],
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "eslint.validate": [
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ],
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "git-commit",
+    "go",
+    "handlebars",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "yml"
+  ]
 }

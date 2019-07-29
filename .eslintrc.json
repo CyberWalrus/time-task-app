@@ -8,20 +8,18 @@
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
-      "tsx": true
+      "jsx": true
     },
     "project": "./tsconfig.json"
   },
   "extends": [
-    "plugin:@typescript-eslint/recommended",
     "airbnb-typescript",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended"
   ],
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
+  "plugins": ["react", "jsx-a11y", "@typescript-eslint"],
   "settings": {
     "react": {
       "version": "detect"
