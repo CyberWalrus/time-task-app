@@ -1,5 +1,4 @@
-import React from 'react';
-import { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import SortableList, { State, PublicFunction } from '../sortable-tasks/sortable-tasks';
 
 type PropsHoc = State & PublicFunction;

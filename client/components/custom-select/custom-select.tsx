@@ -1,7 +1,6 @@
 import React, {
   FC, ReactElement, useState, ChangeEvent, useCallback,
 } from 'react';
-
 import { Option } from 'client/types/forms';
 
 interface Props {

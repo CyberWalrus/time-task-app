@@ -1,6 +1,6 @@
+import { Action as ReduxAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'client/types/reducer';
 import { stringToJDN } from 'client/utils/date/date';
-import { Action as ReduxAction } from 'redux';
 
 enum ActionType {
   SET_DATE = 'SET_DATE',

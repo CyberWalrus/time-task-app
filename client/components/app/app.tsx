@@ -1,5 +1,4 @@
-import React from 'react';
-import { ReactElement, FunctionComponent, Fragment } from 'react';
+import React, { ReactElement, FunctionComponent, Fragment } from 'react';
 import Header from '../header/header';
 import FormTask from '../form-task/form-task';
 import CustomSelect from '../custom-select/custom-select';

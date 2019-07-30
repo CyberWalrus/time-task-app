@@ -1,5 +1,4 @@
 import React, { ReactElement, FunctionComponent } from 'react';
-
 import inputTasks from 'client/constants/form-task';
 import { Option } from 'client/types/forms';
 import FormState from 'client/hooks/form-state/form-state';

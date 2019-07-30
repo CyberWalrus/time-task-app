@@ -1,5 +1,5 @@
-import React from 'react';
-import { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
+
 
 interface Props {
   message: string;

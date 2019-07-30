@@ -1,5 +1,4 @@
 import React, { ReactElement, FunctionComponent, ChangeEvent } from 'react';
-
 import { Option } from 'client/types/forms';
 
 interface Props {

@@ -1,5 +1,4 @@
-import React from 'react';
-import { ReactElement, FunctionComponent } from 'react';
+import React, { ReactElement, FunctionComponent } from 'react';
 import BoxNotification from '../box-notification/box-notification';
 
 const Header: FunctionComponent = (): ReactElement => (
