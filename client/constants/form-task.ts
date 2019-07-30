@@ -1,4 +1,4 @@
-import { Option } from '@client/types/forms';
+import { Option } from 'client/types/forms';
 
 const inputTasks: Option[] = [
   {

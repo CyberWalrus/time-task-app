@@ -15,9 +15,10 @@ const webpackConfig = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'build'),
-    compress: false,
+    compress: true,
     port: 8080,
     historyApiFallback: true,
+    open: true,
   },
   mode: 'development',
   module: {
@@ -53,11 +54,8 @@ const webpackConfig = {
     ],
   },
   resolve: {
+    modules: [path.resolve('./'), 'node_modules', 'client'],
     extensions: ['.ts', '.tsx', '.js', 'json'],
-    alias: {
-      '@client': root('client/'),
-      '@build': root('build/'),
-    },
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devtool: 'source-map',

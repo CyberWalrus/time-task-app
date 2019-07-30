@@ -21,13 +21,15 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["react", "jsx-a11y", "@typescript-eslint"],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "@typescript-eslint"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "import/no-unresolved": "off",
     "max-len": [
       "error",

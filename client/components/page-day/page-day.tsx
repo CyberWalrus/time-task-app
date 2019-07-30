@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FunctionComponent, ReactElement } from 'react';
 import SortableList, { State, PublicFunction } from '../sortable-tasks/sortable-tasks';
 

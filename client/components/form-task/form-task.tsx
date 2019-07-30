@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ReactElement, FunctionComponent } from 'react';
-import inputTasks from '@client/constants/form-task';
-import { Option } from '@client/types/forms';
-import FormState from '@client/hooks/form-state/form-state';
+import React, { ReactElement, FunctionComponent } from 'react';
+
+import inputTasks from 'client/constants/form-task';
+import { Option } from 'client/types/forms';
+import FormState from 'client/hooks/form-state/form-state';
 import CustomInput from '../custom-input/custom-input';
 
 const state = {

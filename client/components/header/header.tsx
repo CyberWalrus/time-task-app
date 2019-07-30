@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ReactElement, FunctionComponent } from 'react';
 import BoxNotification from '../box-notification/box-notification';
 

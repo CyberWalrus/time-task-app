@@ -1,5 +1,5 @@
-import { getLengthSame } from '@client/utils/array/array';
-import * as React from 'react';
+import { getLengthSame } from 'client/utils/array/array';
+import React from 'react';
 import { Fragment, ReactElement } from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
