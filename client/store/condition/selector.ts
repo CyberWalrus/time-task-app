@@ -1,5 +1,5 @@
 import { StateApp } from '../../types/reducer';
-import NameSpace from '../name-spaces';
+import NameSpace from '../name-space';
 import { TypeNotification } from './condition';
 
 const NAME_SPACE = NameSpace.CONDITION;

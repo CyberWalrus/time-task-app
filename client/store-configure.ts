@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import NameSpace from './store/name-spaces';
+import NameSpace from './store/name-space';
 import reducer from './store/store';
 
 const persistConfig = {

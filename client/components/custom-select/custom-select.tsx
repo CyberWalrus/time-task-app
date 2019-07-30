@@ -48,7 +48,6 @@ const CustomSelect: FC<Props> = ({ items }: Props): ReactElement => {
         ...state,
         selected: selected.value,
         value: selected.text,
-        isOpen: false,
       });
     },
     [state],

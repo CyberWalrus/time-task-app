@@ -1,20 +1,19 @@
 import React, { ReactElement, FunctionComponent } from 'react';
-import inputTasks from 'client/constants/form-task';
 import { Option } from 'client/types/forms';
 import FormState from 'client/hooks/form-state/form-state';
 import CustomInput from '../custom-input/custom-input';
 
-const state = {
-  name: '',
-  text: '',
-};
-const FormTask: FunctionComponent = (): ReactElement => {
+interface Props {
+  state: Record<string, string>;
+  configInputs: Option[];
+}
+const CustomForm: FunctionComponent<Props> = ({ state, configInputs }: Props): ReactElement => {
   const { inputs, handleInputChange } = FormState({ state });
   return (
     <form>
       <h2>Add Task</h2>
-      {inputTasks
-        && inputTasks.map(
+      {configInputs
+        && configInputs.map(
           (item: Option): ReactElement => (
             <CustomInput
               key={`form-task-${item.name}`}
@@ -28,4 +27,4 @@ const FormTask: FunctionComponent = (): ReactElement => {
   );
 };
 
-export default FormTask;
+export default CustomForm;
