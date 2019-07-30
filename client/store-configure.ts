@@ -9,7 +9,7 @@ import reducer from './store/store';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [NameSpace.TIME, NameSpace.CONDITION],
+  whitelist: [NameSpace.TIME, NameSpace.CONDITION, NameSpace.TASK],
 };
 
 const reducers = persistReducer(persistConfig, reducer);

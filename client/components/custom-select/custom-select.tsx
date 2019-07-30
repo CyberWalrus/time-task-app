@@ -1,5 +1,5 @@
 import React, {
-  FC, ReactElement, useState, ChangeEvent, useCallback, useEffect, FocusEvent,
+  ReactElement, useState, ChangeEvent, useCallback, useEffect, FocusEvent,
 } from 'react';
 import { Option } from 'client/types/forms';
 
@@ -7,33 +7,39 @@ interface Item {
   value: string;
   text: string;
 }
-interface Props {
+interface Props<T, V> {
   option?: Option;
   value?: Record<string, string>;
-  items?: Item[];
+  items: T[];
+  keyValue: V;
+  keyText: V;
 }
-interface State {
+interface State<T> {
   value: string;
   selected: string;
-  items: Item[];
+  items: T[];
   isOpen: boolean;
 }
-const defaultState: State = {
+const defaultState = {
   value: '',
   selected: '',
   items: [],
   isOpen: false,
 };
 
-const CustomSelect: FC<Props> = ({ items }: Props): ReactElement => {
-  const [state, setState] = useState<State>({ ...defaultState, items });
+const CustomSelect = <T extends Record<V, string>, V extends 'value' | 'id' | 'name' | 'text'>({
+  items,
+  keyValue,
+  keyText,
+}: Props<T, V>): ReactElement => {
+  const [state, setState] = useState<State<T>>({ ...defaultState, items });
 
   const updateList = useCallback((): void => {
     const itemsNew = items
       .slice(0)
-      .filter((item: Item): boolean => item.text.toLowerCase().indexOf(state.value.toLowerCase()) >= 0);
+      .filter((item: T): boolean => item[keyText].toLowerCase().indexOf(state.value.toLowerCase()) >= 0);
     setState({ ...state, items: itemsNew });
-  }, [items, state]);
+  }, [items, keyText, state]);
 
   const handleChangeValue = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
@@ -43,23 +49,32 @@ const CustomSelect: FC<Props> = ({ items }: Props): ReactElement => {
   );
 
   const handleChangeSelected = useCallback(
-    (selected: Item): void => {
+    (selected: T): void => {
       setState({
         ...state,
-        selected: selected.value,
-        value: selected.text,
+        selected: selected[keyValue],
+        value: selected[keyText],
+        isOpen: false,
       });
     },
-    [state],
+    [keyText, keyValue, state],
   );
+
+  const handleClearSelected = useCallback((): void => {
+    setState({
+      ...state,
+      selected: '',
+      value: '',
+    });
+  }, [state]);
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>): void => {
     const target = event.relatedTarget;
     if (target && target instanceof Node && event.currentTarget.contains(target)) {
       return;
     }
-    const element = items.find((item: Item): boolean => item.value === state.selected);
-    const value = element ? element.text : '';
+    const element = items.find((item: T): boolean => item[keyValue] === state.selected);
+    const value = element ? element[keyText] : '';
     setState({ ...state, isOpen: false, value });
   };
   useEffect((): void => {
@@ -71,7 +86,7 @@ const CustomSelect: FC<Props> = ({ items }: Props): ReactElement => {
       <div className="custom-select__header">
         {state.selected}
         <input type="text" value={state.value} onChange={handleChangeValue} className="custom-select__input" />
-        <button type="button" onClick={(): void => handleChangeSelected({ value: '', text: '' })}>
+        <button type="button" onClick={handleClearSelected}>
           Clear
         </button>
       </div>
@@ -82,10 +97,10 @@ const CustomSelect: FC<Props> = ({ items }: Props): ReactElement => {
       >
         {state.items
           && state.items.map(
-            (item: Item): ReactElement => (
-              <li key={`custom-select-${item.value}`} className="custom-select__item">
+            (item: T): ReactElement => (
+              <li key={`custom-select-${item[keyValue]}`} className="custom-select__item">
                 <button type="button" onClick={(): void => handleChangeSelected(item)}>
-                  {item.text}
+                  {item[keyText]}
                 </button>
               </li>
             ),

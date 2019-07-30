@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 type InputEvent = ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>;
 type HandleSelectChange = (optionSelected: object) => void;
@@ -6,31 +6,31 @@ interface ValueObject {
   value: string;
 }
 type OptionSelected = object & ValueObject;
-interface ReturnValues<S> {
-  handleSubmit: (event: Event) => void;
+interface ReturnValues<T> {
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
   handleInputChange: (event: InputEvent) => void;
   handleSelectChange: (name: string) => (optionSelected: { value: string; label: string }) => void;
-  inputs: S;
+  inputs: T;
 }
-interface Props<S> {
-  state: S;
-  callback?: () => void;
+interface Props<T> {
+  state: T;
+  callback: (item: T) => void;
 }
-const FormState = <S>({ state, callback }: Props<S>): ReturnValues<S> => {
-  const [inputs, setInputs] = useState<S>(state);
+const FormState = <T extends {}>({ state, callback }: Props<T>): ReturnValues<T> => {
+  const [inputs, setInputs] = useState<T>(state);
 
-  const handleSubmit = (event: Event): void => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     if (event) {
       event.preventDefault();
     }
     if (callback) {
-      callback();
+      callback(inputs);
     }
   };
   const handleInputChange = (event: InputEvent): void => {
     event.persist();
     setInputs(
-      (values: S): S => ({
+      (values: T): T => ({
         ...values,
         [event.target.name]: event.target.value,
       }),
@@ -38,10 +38,12 @@ const FormState = <S>({ state, callback }: Props<S>): ReturnValues<S> => {
   };
   const handleSelectChange = (name: string): HandleSelectChange => (optionSelected: OptionSelected): void => {
     const { value } = optionSelected;
-    setInputs((values: S): S => ({
-      ...values,
-      [name]: value,
-    }));
+    setInputs(
+      (values: T): T => ({
+        ...values,
+        [name]: value,
+      }),
+    );
   };
   return {
     handleSubmit,

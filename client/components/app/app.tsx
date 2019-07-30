@@ -1,5 +1,5 @@
 import React, { ReactElement, FunctionComponent, Fragment } from 'react';
-import inputTasks from 'client/constants/form-task';
+import inputTaskStatus from 'client/constants/form-task-status';
 import { Operation } from 'client/store/task/task';
 import { getTaskStatus } from 'client/store/task/selector';
 import { connect } from 'react-redux';
@@ -11,9 +11,10 @@ import CustomSelect from '../custom-select/custom-select';
 
 const customLists = [{ value: 'TOP', text: 'HEllo' }, { value: 'BOTTOM', text: 'test' }];
 
-const stateTask = {
+const stateTask: TaskStatus = {
+  id: '',
   name: '',
-  text: '',
+  isActive: true,
 };
 interface PropsState {
   taskStatus: TaskStatus[];
@@ -25,12 +26,14 @@ interface PropsDispatch {
 
 type Props = PropsState & PropsDispatch;
 
-const App: FunctionComponent = (): ReactElement => (
+const App: FunctionComponent<Props> = ({ taskStatus, onSendTaskStatus }: Props): ReactElement => (
   <Fragment>
     <Header />
     <main className="page-content">
-      <CustomForm state={stateTask} configInputs={inputTasks} />
-      <CustomSelect items={customLists} />
+      {taskStatus
+        && taskStatus.map((item: TaskStatus): ReactElement => <div key={`task-status-${item.id}`}>{item.name}</div>)}
+      <CustomForm state={stateTask} configInputs={inputTaskStatus} onSend={onSendTaskStatus} />
+      <CustomSelect items={taskStatus} keyText="name" keyValue="id" />
     </main>
   </Fragment>
 );

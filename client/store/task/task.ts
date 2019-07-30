@@ -80,7 +80,7 @@ const Operation = {
       const taskStatusNew = { ...taskStatus, id: (id + 1).toString() };
       tasksStatusNew.push(taskStatusNew);
       dispatch(ActionCreator.setTaskStatus(tasksStatusNew));
-      dispatch(ActionCreator.incTaskQuantity());
+      dispatch(ActionCreator.incTaskStatusQuantity());
     },
   ),
 };
