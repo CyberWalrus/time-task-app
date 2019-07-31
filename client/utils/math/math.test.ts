@@ -1,6 +1,6 @@
 import getRandomInt from './math';
 
-describe('Test getRandomInt', (): void => {
+describe('Test getRandomInt', async (): Promise<void> => {
   it('Test random 0 - 1', (): void => {
     expect(getRandomInt(0, 1)).toBeLessThanOrEqual(1);
     expect(getRandomInt(0, 1)).toBeGreaterThanOrEqual(0);
