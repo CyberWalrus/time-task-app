@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <meta name="Description" content="Author: A.N. Pakhomov" />
-    <link rel="manifest" href="manifest.json">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <title>Walrus</title>
     <link
       rel="stylesheet"
@@ -33,6 +33,41 @@
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="app">
+        <div class="app__header">
+          <h2>Home</h2>
+        </div>
+        <p class="app__intro">
+          Loading site...
+        </p>
+      </div>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(
+              function(registration) {
+                // Registration was successful
+                console.log(
+                  "ServiceWorker registration successful with scope: ",
+                  registration.scope
+                );
+              },
+              function(err) {
+                // registration failed :(
+                console.log("ServiceWorker registration failed: ", err);
+              }
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log("service worker is not supported");
+      }
+    </script>
   </body>
 </html>

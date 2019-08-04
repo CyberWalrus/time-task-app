@@ -38,17 +38,11 @@ self.addEventListener("install", function(event) {
             // We could also cache any static assets like CSS or images
             const urlsToCache = [
               "./index.html",
-              "./js/bundle.js",
-              "./css/normalize.css",
-              "./css/style.css",
+              "./js/",
+              "./css/",
+              "./assets/img",
               "./manifest.json",
-              "./service-worker.js",
-              "./walrus-font/css/walrus.css",
-              "./walrus-font/fonts/walrus.eot",
-              "./walrus-font/fonts/walrus.svg",
-              "./walrus-font/fonts/walrus.ttf",
-              "./walrus-font/fonts/walrus.wolf",
-              "./img/walrus-icon-white.png"
+              "./favicon.ico",
             ];
             cache.addAll(urlsToCache);
             console.log("cached");
