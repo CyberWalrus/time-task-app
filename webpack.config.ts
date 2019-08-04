@@ -2,7 +2,9 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 import * as webpackDevServer from 'webpack-dev-server';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const root = (args: string): string => path.join(...[__dirname].concat('./', args));
 
@@ -11,7 +13,7 @@ const webpackConfig = {
     bundle: [root('client/index.tsx'), root('style/style.scss')],
   },
   output: {
-    filename: 'js/bundle.js',
+    filename: 'js/main.[hash].js',
     path: root('build/'),
   },
   devServer: {
@@ -67,6 +69,13 @@ const webpackConfig = {
     extensions: ['.ts', '.tsx', '.js', 'json'],
   },
   plugins: [
+    new CopyPlugin([
+      {
+        from: root('public/'),
+        to: root('build/'),
+      },
+    ]),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: root('public/index.html'),

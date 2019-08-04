@@ -14,7 +14,7 @@ const Header: FunctionComponent = (): ReactElement => (
           inline-size="5rem"
           block-size="5rem"
           className="logo__img"
-          src="img/walrus-icon-white.png"
+          src="assets/img/walrus-icon-white.png"
           alt="walrus logo"
         />
       </button>
