@@ -2,6 +2,7 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 import * as webpackDevServer from 'webpack-dev-server';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const root = (args: string): string => path.join(...[__dirname].concat('./', args));
 
@@ -23,6 +24,14 @@ const webpackConfig = {
   mode: 'development',
   module: {
     rules: [
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 10000,
+          name: 'static/media/[name].[hash:8].[ext]',
+        },
+      },
       {
         test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
@@ -57,7 +66,25 @@ const webpackConfig = {
     modules: [path.resolve('./'), 'node_modules', 'client'],
     extensions: ['.ts', '.tsx', '.js', 'json'],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: root('public/index.html'),
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   devtool: 'source-map',
 };
 
